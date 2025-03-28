@@ -28,21 +28,56 @@ void print_board(char board[3][3])
     }
 }
 
-char get_winner(char board[3][3])
-{
+char get_winner(char board[3][3]){
+
     char winner = '-';
-    //
-    // TODO: COMPLETAR
-    //
+
+    //algoritmo que corrobora si hay ganador en las filas
+    for (int i = 0; i < 3; i++){
+            if (board[i][0] == board[i][1] && board[i][0] == board[i][2]){
+                winner = board[i][0];
+            }    
+    }
+
+    //algoritmo que corrobora si hay ganador en las columnas
+    if (winner == '-'){
+        for (int j = 0; j < 3; j++){
+            if (board[0][j] == board[1][j] && board[0][j] == board[2][j]){
+                winner = board[0][j];
+            }    
+        }
+    }
+
+    //algoritmo que corrobora si hay ganador en las diagonales
+    
+    if (winner == '-'){    
+        if (board[0][0] == board[1][1] && board[0][0] == board[2][2]){
+            winner = board[0][0];
+        }
+    }
+
+    if (winner == '-'){
+        if (board[0][2] == board[1][1] && board[0][2]== board[2][0]){
+            winner = board[0][2];
+        }
+    }
+
     return winner;
 }
 
 bool has_free_cell(char board[3][3])
 {
-    bool free_cell=false;
-    //
-    // TODO: COMPLETAR
-    //
+    bool free_cell = false;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if(board[i][j] == '-'){
+                free_cell = true;
+            }
+        }
+    }
+    
     return free_cell;
 }
 
