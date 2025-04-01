@@ -58,6 +58,9 @@ int main(int argc, char *argv[]) {
     int copy[MAX_SIZE];
     array_copy(copy, array, length);
 
+    /*Se llama al algortimo quick sort para ordenar el arreglo */
+    quick_sort(array, length);
+
     /* show the ordered array in the screen */
     array_dump(array, length);
 
