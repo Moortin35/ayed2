@@ -9,11 +9,16 @@
 
 static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
  
-    int pivot = izq;
+    unsigned int pivot = izq;
     if (der > izq){
         pivot = partition(a, izq, der);
-        quick_sort_rec(a, izq, pivot-1);
-        quick_sort_rec(a, pivot+1, der);
+        if (pivot == 0){
+            quick_sort_rec(a, pivot+1, der);
+        }
+        else{
+            quick_sort_rec(a, izq, pivot-1);
+            quick_sort_rec(a, pivot+1, der);
+        }
     }
 }
 
