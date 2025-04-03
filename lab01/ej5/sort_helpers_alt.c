@@ -12,7 +12,7 @@ void swap(fixstring a[], unsigned int i, unsigned int j) {
 }
 
 bool goes_before(fixstring x, fixstring y) {
-    bool res = fstring_less_eq(x, y);
+    bool res = fstring_length(x) <= fstring_length(y);
     return res;
 }
 
