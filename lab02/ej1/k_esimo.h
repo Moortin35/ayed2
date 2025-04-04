@@ -12,6 +12,6 @@
  * @param length Largo del arreglo.
  * @param k Posicion dentro del arreglo si estuviera ordenado.
  */
-int k_esimo(int a[], int length, int k);
+int k_esimo(int a[], unsigned int length, unsigned int k);
 
 #endif

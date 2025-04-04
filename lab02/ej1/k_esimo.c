@@ -2,9 +2,9 @@
 #include "k_esimo.h"
 
 // FUNCIONES INTERNAS DEL MÓDULO:
-int partition(int a[], int izq, int der);
+int partition(int a[], unsigned int izq, unsigned int der);
 bool goes_before(int x, int y);
-void swap(int a[], int i, int j);
+void swap(int a[], unsigned int i, unsigned int j);
 
 /**
  * @brief K-esimo elemento mas chico del arreglo a.
@@ -17,14 +17,29 @@ void swap(int a[], int i, int j);
  * @param length Largo del arreglo.
  * @param k Posicion dentro del arreglo si estuviera ordenado.
  */
-int k_esimo(int a[], int length, int k) {
+int k_esimo(int a[], unsigned int length, unsigned int k) {
 
-    // COMPLETAR!!
+    unsigned int izq = 0;
+    unsigned int der = length-1;
+    unsigned int piv;
+    int elem;
 
-    return 0;
+    piv = partition(a, izq, der);
+        
+    while(piv != k){
+        if (piv < k){
+            izq = piv+1;
+        }
+        else{
+            der = piv-1;
+        }
+        piv = partition(a, izq, der);
+    }
+    elem = a[piv];
+    return elem;
 }
 
-int partition(int a[], int izq, int der) {
+int partition(int a[], unsigned int izq, unsigned int der) {
     int i, j, ppiv;
     ppiv = izq;
     i = izq + 1;
@@ -49,7 +64,7 @@ bool goes_before(int x, int y) {
     return x <= y;
 }
 
-void swap(int a[], int i, int j) {
+void swap(int a[], unsigned int i, unsigned int j) {
     int tmp = a[i];
     a[i] = a[j];
     a[j] = tmp;

@@ -3,7 +3,7 @@
 #include "k_esimo.h"
 
 #define MAX_LENGTH 5
-#define N_TESTCASES 1
+#define N_TESTCASES 10
 
 struct testcase {
     int a[MAX_LENGTH];
@@ -13,13 +13,22 @@ struct testcase {
 };
 
 int main() {
+
     struct testcase tests[N_TESTCASES] = {
       // arreglo, largo, k, resultado esperado
-      { {8}, 1, 0, 8 },
-
-      // COMPLETAR!!
-
+      //{ {8}, 1, 0, 8 }, vino de ejemplo
+      { {2}, 1, 0, 2 },
+      { {4, 9}, 2, 0, 4},
+      { {5, 11}, 2, 1, 11},
+      { {13, 2}, 2, 0, 2},
+      { {7, -2}, 2, 1, 7},
+      {{8, -2, 9, 0, 13}, 5, 0, -2},
+      {{8, -2, 9, 0, 13}, 5, 1, 0},
+      {{8, -2, 9, 0, 13}, 5, 2, 8},
+      {{8, -2, 9, 0, 13}, 5, 3, 9},
+      {{8, -2, 9, 0, 13}, 5, 4, 13}
     };
+
     int result;
 
     printf("TESTING k_esimo\n");
