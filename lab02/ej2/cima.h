@@ -13,6 +13,9 @@
  * @param a Arreglo.
  * @param length Largo del arreglo.
  */
+
+int cima_sec(int array[], int length);
+
 bool tiene_cima(int a[], int length);
 
 /**
