@@ -30,8 +30,8 @@ bool fstring_eq(fixstring s1, fixstring s2) {
 }
 
 bool fstring_less_eq(fixstring s1, fixstring s2) {
-    assert(s1 != NULL && s2 != NULL);
-    bool are_less = false;
+    //assert(s1 != NULL && s2 != NULL);
+    bool are_less;
     int s1_length = fstring_length(s1);
     int s2_length = fstring_length(s2);
     int i = 0;

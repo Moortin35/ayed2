@@ -1,10 +1,13 @@
+#include <stdio.h>
 #include <stdbool.h>
 #include "k_esimo.h"
+
 
 // FUNCIONES INTERNAS DEL MÓDULO:
 int partition(int a[], unsigned int izq, unsigned int der);
 bool goes_before(int x, int y);
 void swap(int a[], unsigned int i, unsigned int j);
+void array_dump(int a[], unsigned int length);
 
 /**
  * @brief K-esimo elemento mas chico del arreglo a.
@@ -23,10 +26,11 @@ int k_esimo(int a[], unsigned int length, unsigned int k) {
     unsigned int der = length-1;
     unsigned int piv;
     int elem;
-
+    array_dump(a,length);
     piv = partition(a, izq, der);
-        
+    array_dump(a,piv+1);    
     while(piv != k){
+        array_dump(a,piv+1);
         if (piv < k){
             izq = piv+1;
         }
@@ -34,7 +38,9 @@ int k_esimo(int a[], unsigned int length, unsigned int k) {
             der = piv-1;
         }
         piv = partition(a, izq, der);
+        array_dump(a,piv+1);
     }
+    array_dump(a,piv+1);
     elem = a[piv];
     return elem;
 }
@@ -68,4 +74,17 @@ void swap(int a[], unsigned int i, unsigned int j) {
     int tmp = a[i];
     a[i] = a[j];
     a[j] = tmp;
+}
+
+
+void array_dump(int a[], unsigned int length) {
+    fprintf(stdout, "%u\n", length);
+    for (unsigned int i = 0u; i < length; ++i) {
+        fprintf(stdout, "%i", a[i]);
+        if (i < length - 1) {
+            fprintf(stdout, " ");
+        } else {
+            fprintf(stdout, "\n");
+        }
+    }
 }
