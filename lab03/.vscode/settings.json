@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "weather_table.h": "c",
+        "weather.h": "c"
+    }
+}

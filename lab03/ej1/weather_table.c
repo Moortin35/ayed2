@@ -69,6 +69,7 @@ void table_from_file(WeatherTable a, const char *filepath) {
 
         // También completar acá:
         // Guardar la medición de clima en el arreglo multidimensional.
+        a[k_year-FST_YEAR][k_month-1u][k_day-1u] = weather;
     }
 
     fclose(file);
