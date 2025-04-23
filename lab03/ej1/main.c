@@ -10,6 +10,9 @@
 
 /* Then, this project's includes, alphabetically ordered */
 #include "weather_table.h"
+#include "weather.h"
+#include "weather_utils.h"
+
 
 /**
  * @brief print usage help
@@ -71,6 +74,18 @@ int main(int argc, char *argv[]) {
 
     /* show the table in the screen */
     table_dump(table);
+
+    //Imprimo inciso A
+    int lowest_historical_temp = lowest_hist_temp(table);
+    printf("La temperatura más baja historicamente fue de: %d\n", lowest_historical_temp);
+
+    //Imprimo inciso B
+    int array_of_temps[YEARS];
+    highest_hist_temps(table, array_of_temps);
+
+    //Imprimo inciso C
+    month_t array_of_months[YEARS];
+    array_of_rainfall_month(table, array_of_months);
 
     return EXIT_SUCCESS;
 }
