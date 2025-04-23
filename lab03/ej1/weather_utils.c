@@ -67,7 +67,7 @@ void array_of_rainfall_month(WeatherTable a, month_t array_of_months[YEARS]){
         array_of_months[i] = mesPrec;
     }
     for (unsigned int year = 0; year < YEARS; year++) {
-        printf("El mes con mayor precipitaciones del año%d es: %d \n",1980+year, array_of_months[year]);       
+        printf("El mes con mayor precipitaciones del año %d es: %d \n",1980+year, array_of_months[year]);       
     }
 }
 

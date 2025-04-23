@@ -73,17 +73,22 @@ int main(int argc, char *argv[]) {
     table_from_file(table, filepath);
 
     /* show the table in the screen */
-    table_dump(table);
+    //table_dump(table);
 
     //Imprimo inciso A
+    printf("\n");
+    
     int lowest_historical_temp = lowest_hist_temp(table);
     printf("La temperatura más baja historicamente fue de: %d\n", lowest_historical_temp);
 
+
     //Imprimo inciso B
+    printf("\n");
     int array_of_temps[YEARS];
     highest_hist_temps(table, array_of_temps);
 
     //Imprimo inciso C
+    printf("\n");
     month_t array_of_months[YEARS];
     array_of_rainfall_month(table, array_of_months);
 
