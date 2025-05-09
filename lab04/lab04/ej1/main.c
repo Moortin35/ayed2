@@ -28,6 +28,21 @@ int main(void) {
        m = (100, F)
        a[1] = 42
 
+    */
+    //Cambio el valor de x, referenciando a traves de un puntero p
+    int *p;
+    p = &x;
+    *p = 9;
+    //Cambio los valores de la tupla
+    person_t *q;
+    q = &m;
+    q->age = 100;
+    q->name_initial = 'F';
+    //Cambio el valor del elemento del arreglo a traves de punteros
+    p = &a[1];
+    *p = 42;
+
+    /*
        Las restricciones son:
        - No usar las variables 'x', 'm' y 'a' en la parte izquierda de alguna asignación.
        - Se pueden agregar líneas de código, pero no modificar las que ya existen.
