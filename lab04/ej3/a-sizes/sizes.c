@@ -14,37 +14,39 @@ print_data(data_t d) {
 
 int main(void) {
 
-    
     data_t *messi;
-    messi = calloc(1, sizeof(data_t));
-    messi->age = 36;
+    messi = malloc(sizeof(data_t));
+    messi->age = 37;
     messi->height = 169;
-    messi->name = malloc(20 * sizeof(char)); // Asigna memoria dinámica
-    messi->name, "Leo Messi";       // Copia el contenido del literal a la memoria asignada
+    messi->name[0] = 'L';
+    messi->name[1] = 'e';
+    messi->name[2] = 'o';
+    messi->name[3] = ' ';
+    messi->name[4] = 'M';
+    messi->name[5] = 'e';
+    messi->name[6] = 's';
+    messi->name[7] = 's';
+    messi->name[8] = 'i';
+    messi->name[9] = '\0';
 
- 
+    print_data(*messi);
 
-
-    /*
-    print_data(messi);
-
-
-    printf("name-size  : %llu bytes\n"
-           "age-size   : %llu bytes\n"
-           "height-size: %llu bytes\n"
-           "data_t-size: %llu bytes\n", sizeof(messi.name), sizeof(messi.age), sizeof(messi.height), sizeof(messi));
+    printf("name-size  : %lu bytes\n"
+       "age-size   : %lu bytes\n"
+           "height-size: %lu bytes\n"
+           "data_t-size: %lu bytes\n", sizeof(messi->name), sizeof(messi->age), sizeof(messi->height), sizeof(messi));
 
     printf("name-size direction: %p \n"
            "age-size  direction: %p \n"
            "height-size direction: %p \n"
-           "data_t-size direction: %p \n", (void *)&messi.name, (void *)&messi.age, (void *)&messi.height, (void *)&messi);
+           "data_t-size direction: %p \n", (void *)&messi->name, (void *)&messi->age, (void *)&messi->height, (void *)&messi);
     
-    printf( "name-size índice: %llu \n"
-            "age-size  índice: %llu \n"
-            "height-size índice: %llu \n"
-            "data_t-size índice: %llu \n", (uintptr_t)&messi.name, (uintptr_t)&messi.age, (uintptr_t)&messi.height, (uintptr_t)&messi);
-    */
-            free(messi);
-            free(messi->name); // Libera la memoria asignada para el nombre
+    printf( "name-size índice: %lu \n"
+            "age-size  índice: %lu \n"
+            "height-size índice: %lu \n"
+            "data_t-size índice: %lu \n", (uintptr_t)&messi->name, (uintptr_t)&messi->age, (uintptr_t)&messi->height, (uintptr_t)&messi);
+
+
+    free(messi);
     return EXIT_SUCCESS;
 }

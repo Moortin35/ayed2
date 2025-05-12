@@ -37,6 +37,7 @@ unsigned int array_from_file(int array[], unsigned int max_size, const char *fil
         fprintf(stderr, "Allowed size is %d.\n", max_size);
         exit(EXIT_FAILURE);
     }
+    
     while (i < size) {
         res = fscanf(file," %d ", &(array[i]));
         if (res != 1) {
