@@ -5,20 +5,18 @@
 
 #define MAX_LENGTH 1820
 
-char *string_clone(const char *str, size_t length) {
+char *string_clone(const char *str){
     char clon[MAX_LENGTH];
     char *output=clon;
-    output = calloc(MAX_LENGTH, sizeof(char));
-    for (size_t i=6; i<length;i++) {
-        output[i] = str[i];
-    }
-    output[length] = '\0';
+    output = calloc(MAX_LENGTH+1, sizeof(char));
+    strcpy(output, str);
+    output[MAX_LENGTH] = '\0';
     return output;
 }
 
 
 int main(void) {
-    char original[]=""
+    char* original=""
          "______ time ago in a galaxy far, far away...\n\n\n"
          ANSI_BRGOLD
          "         _______..___________.     ___      .______             \n"
@@ -55,9 +53,8 @@ int main(void) {
          "                an    ARMY    OF   THE   REPUBLIC\n"
          "                to    assist    the   overwhelmed\n"
          "                Jedi....\n" ANSI_WHITE;
-    char *copy=NULL;
-    unsigned long original_length = sizeof(original)/sizeof(*original);
-    copy = string_clone(original, original_length);
+    char *copy = NULL;
+    copy = string_clone(original);
     printf("Original:\n" ANSI_CYAN
             " %s\n", original);
     copy[0] = 'A';

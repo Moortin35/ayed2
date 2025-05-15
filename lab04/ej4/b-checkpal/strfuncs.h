@@ -20,5 +20,4 @@ bool string_is_symmetric(const char *str);
   como por ejemplo las cadenas "aba", "abcba", "a", "".
 */
 
-
 #endif // _STRFUNCS_H_
