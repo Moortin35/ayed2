@@ -1,0 +1,40 @@
+//Ejercicio 3: Recorrido de auto con autonomia por ciudades.
+
+type ciudad =   tuple
+                    nombre: string
+ //                   proxima_ciudad: string
+                    distancia: int
+                end tuple
+
+type paradas = tuple
+                cantidad: int
+                ciudades: list of ciudades
+            end
+
+fun carga_combustible(ciudades: list of ciudad, autonomia: nat) ret res : paradas
+    var caux : list of ciudad
+    res.ciudades := empty_list()
+    res.cantidad := 0
+    caux = copy_list(ciudades)
+    autonomia : nat
+    var ciudad_actual : ciudad
+    
+    //agrego la primera ciudad, la primera carga:
+    addl(res.ciudades, head(caux))
+    res.cantidad = res.cantidad + 1;
+    tail(caux);
+    //ahora si recorro y calculo la cantidad hasta que complete la totalidad del recorrido
+    while(not is_empty(caux)) do
+        int aut = autonomia//300        
+        while(aut >= head(caux).distancia || length(caux) != 1)do // 300>200 ->
+            aut = aut - head(caux).distancia//100 -> 
+            ciudad_actual = head(caux);//guardo la ultima ciudad(san martin)
+            tail(caux); //elimino san martin
+            if aut >= head(caux).distancia then // quiere deir que si la distancia proxima es mayor a la autonomia
+                addl(res.ciudades, ciudad_actual); //añado san martin
+                res.cantidad = res.cantidad + 1;
+            fi
+        od//ya no puede recorrer asi que, cargo nafta
+    od
+    list_destroy(caux)
+end fun

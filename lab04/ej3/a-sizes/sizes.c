@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "data.h"
 
@@ -18,17 +19,8 @@ int main(void) {
     messi = malloc(sizeof(data_t));
     messi->age = 37;
     messi->height = 169;
-    messi->name[0] = 'L';
-    messi->name[1] = 'e';
-    messi->name[2] = 'o';
-    messi->name[3] = ' ';
-    messi->name[4] = 'M';
-    messi->name[5] = 'e';
-    messi->name[6] = 's';
-    messi->name[7] = 's';
-    messi->name[8] = 'i';
-    messi->name[9] = '\0';
-
+    strcpy(messi->name, "Leo Messi");
+    
     print_data(*messi);
 
     printf("name-size  : %lu bytes\n"
