@@ -33,17 +33,27 @@ char *parse_filepath(int argc, char *argv[]) {
 
 
 float average(list l) {
-/*
-    Needs implementation.
-*/
+    int n = length(l);
+    printf("largo es: %d\n", n);
+    list l2 = copy_list(l);
+    float suma = 0;
+    while(!is_empty(l2)){
+        suma = suma + head(l2);
+        l2 = tail(l2);
+    }
+    float promedio = suma / n;
+    return promedio;
 }
 
 list array_to_list(int array[], unsigned int length) {
     /* Initialize the list */
+    list l = empty_list();
     for (unsigned int i = 0u; i < length; ++i) {
         /* Add element to the list  */
+        l = addl(l, array[i]);
     }
     /* Return list */
+    return l;
 }
 
 int main(int argc, char *argv[]) {
