@@ -4,34 +4,24 @@
 
 #include "list.h"
 
-
-typedef int elem;
-typedef struct _list * list;
-
 struct _list {
     elem element;
     struct _list * next;
 };
 
-list empty(){
-    list l = malloc(sizeof(struct _list));
-    return l;
+list empty(void){
+    return NULL;
 }
 
 list addl(elem e, list l){
     list p = malloc(sizeof(struct _list));
     p->element = e;
     p->next = l;
-    l = p;
-    return l;
+    return p;
 }
 
 bool is_empty(list l){
-    bool b = false;
-    if(l == NULL){
-        b = true;
-    }
-    return b;
+    return (l ==NULL);
 }
 
 elem head(list l){
@@ -43,22 +33,19 @@ list tail(list l){
     assert(!is_empty(l));
     list p;
     p = l;
-    if(p->next!= NULL){
-        p = p->next;
-        free(l);
-        l = p;
-    }
-    else{
-        free(l);
-    }
+    l = l->next;
+    free(p);
     return l;
 }
 
 list addr(list l, elem e){
+    
     list q = malloc(sizeof(struct _list));
     q->element = e;
     q->next = NULL;
+
     list p;
+    
     if (!is_empty(l)){
         p = l;
         while(p->next != NULL){
@@ -76,21 +63,27 @@ int length(list l){
     int n = 0;
     list p;
     p = l;
-    while(p->next != NULL){
-        n++;
-        p = p->next;
+    if(!is_empty(l)){
+        while(p->next != NULL){
+            n++;
+            p = p->next;
+        }
     }
     return n;
 }
 
 list concat(list l, list l0){
-    list p,q;
+    list p;
+    list q = copy_list(l0);
     p = l;
-    q = l0;
-    while(p->next != NULL){
-        p = p->next;
+    if(!is_empty(l)){
+        while(p->next != NULL){
+            p = p->next;
+        }
+        p->next = q;
+    }else{
+        l = q;
     }
-    p->next = q;
     return l;
 }
 
@@ -106,30 +99,36 @@ elem index(list l, int n){
 }
 
 list take(list l, int n){
-    if(n == 0 || length(l) == n){
+    int i = 0;
+    if(n == 0 || length(l) >= n){
         destroy_list(l);
         l = NULL;
     }
     else{
-        for(int i = 0; i < n; i++){
-            l = l->next;
+        list p = l;
+        while (i < n && p->next != NULL){
+            p = p->next;
+            i++;
         }
-        list p;
-	    while(l != NULL){
-            p = l;
-            l = l->next;
-            free(p);
-	    }
+        list aux = p->next; //guardo en aux el elemento a eliminar
+        p->next = NULL; // corto la lqista original
+        //procedo a eliminar el resto
+        list q; //puntero que uso para eliminar
+        while(aux != NULL){
+            q = aux;
+            aux = aux->next;
+            free(q);
+        }
     }
     return l;
 }
 
 list drop(list l, int n){
-    if (!(n == 0) && !(length(l) == n)){
+    if (!is_empty(l) && n > 0){
         list p,q;
         p = l;
         int i = 0;
-        while(i < n){
+        while(i < n && p->next != NULL){
             q = p;
             p = p->next;
             free(q);
@@ -145,7 +144,7 @@ list copy_list(list l){
     list p;
     p = l;
     while(p != NULL){
-        addr(l2, p->element);
+        l2 = addr(l2, p->element);
         p = p->next;
     }
     return l2;
@@ -158,5 +157,5 @@ void destroy_list(list l){
 		l = l->next;
 		free(p);
 	}
-    return l;
+    l = NULL;
 }
