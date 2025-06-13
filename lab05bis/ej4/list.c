@@ -9,6 +9,30 @@ struct _list {
     struct _list * next;
 };
 
+struct _pepo {
+    elem element;
+    struct _pera fruta;
+};
+
+struct _pera {
+    elem elementito;
+    int peso;
+};
+
+typedef struct _pepo * pepo;
+
+int main(){
+    
+    pepo perita;
+    perita->fruta.elementito = 15;
+    perita->fruta.peso = 12;
+
+    return 0;
+
+}
+
+
+
 list empty(void){
     return NULL;
 }

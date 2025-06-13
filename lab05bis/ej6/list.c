@@ -11,3 +11,16 @@ struct _list {
     int start;
     int size;
 };
+
+list empty(){
+    list l = malloc(sizeof(struct _list));
+    l->start = 0;
+    l->size = 0;   
+}
+
+struct _list {
+    elem a[MAX_LENGTH];
+    int start;
+    int size;
+};
+
